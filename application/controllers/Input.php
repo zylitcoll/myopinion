@@ -4,8 +4,8 @@ class Input extends CI_Controller {
 
     public function index()
 	{
-        $this->load->model("input_model");
-        $data2["fetch_data2"] = $this->input_model->fetch_data2();
+        $this->load->model("Input_model");
+        $data2["fetch_data2"] = $this->Input_model->fetch_data2();
         $this->load->view("input",$data2);
     }
 
@@ -21,7 +21,7 @@ class Input extends CI_Controller {
 
         if($this->form_validation->run())
         {
-            $this->load->model("input_model");
+            $this->load->model("Input_model");
             $data = array(
                 "responden"       =>$this->input->post("responden"),
                 "p1"              =>$this->input->post("p1"),
@@ -31,7 +31,7 @@ class Input extends CI_Controller {
                 "p5"              =>$this->input->post("p5"),
                
             );
-            $this->input_model->insert_data($data);
+            $this->Input_model->insert_data($data);
 
             redirect(base_url() . 'Input/Berhasil');
         }

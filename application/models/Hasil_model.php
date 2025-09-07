@@ -1,6 +1,6 @@
 <?php
 
-class hasil_model extends CI_ModeL {
+class Hasil_model extends CI_ModeL {
     
     public function total()
     {
@@ -156,4 +156,3 @@ class hasil_model extends CI_ModeL {
 
 }
 ?>
-

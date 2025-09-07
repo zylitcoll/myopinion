@@ -14,4 +14,3 @@ class input_model extends CI_ModeL {
     }
 }
 ?>
-

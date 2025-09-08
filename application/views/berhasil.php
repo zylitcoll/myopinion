@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Sistem Informasi Kuisioner Survey</title>
-        <link href="assetsh/gambar/Bg3.png" rel="shortcut icon" />
+<head>
+    <meta charset="UTF-8">
+    <title>Berhasil | MyOpinion</title>
+    <link href="<?= base_url(); ?>assetsh/gambar/Bg3.png" rel="shortcut icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo base_url() ;?>/assetsh/theme/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="<?php echo base_url() ;?>/assetsh/theme/usebootstrap.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="bootstrap/html5shiv.js"></script>
-      <script src="bootstrap/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="<?php echo base_url() ;?>/" class="navbar-brand">Sistem Informasi Kuisioner Kuisioner</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-        </div>
-      </div>
-    </div>
-  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jumbotron {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn-info {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            transition: all 0.3s ease;
+        }
+
+        .btn-info:hover {
+            background-color: #3b5cb8;
+            border-color: #3b5cb8;
+        }
+    </style>
+</head>
+
+<body>
     <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-          <div class="page-header">
-
-          </div>
-          <div class="bs-component">
-            <div class="jumbotron">
-              <h1>Terimakasih atas partisipasinya !!!</h1>
-              <p>Jawaban Anda Berhasil Terinput.</p>
-              <p><a href="<?php echo base_url() ;?>" class="btn btn-info btn-lg">Kembali</a></p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="jumbotron">
+                    <h1 class="display-4 fw-bold text-success"><i class="fas fa-check-circle me-2"></i>Terima Kasih!</h1>
+                    <p class="lead">Jawaban Anda berhasil terkirim. Partisipasi Anda sangat berarti bagi kami.</p>
+                    <hr class="my-4">
+                    <a href="<?= base_url(); ?>" class="btn btn-info btn-lg rounded-pill">Kembali ke Beranda</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="<?php echo base_url() ;?>/assetsh/bootstrap/bootstrap.min.js"></script>
-	<script src="<?php echo base_url() ;?>/assetsh/bootstrap/usebootstrap.js"></script>
-  </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
 </html>

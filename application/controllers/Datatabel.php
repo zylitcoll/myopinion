@@ -57,7 +57,7 @@ class Datatabel extends CI_Controller {
 		$crud->set_theme('datatables');
 		$crud->set_table('t_kuisioner');
 		$crud->set_subject('Data Responden');
-		$crud->columns('id','responden','p1','p2','p3','p4','p5','p6','p7','p8','p9');
+		$crud->columns('id','responden','email','p1','p2','p3','p4','p5','p6','p7','p8','p9');
 		
 		// Admin tidak bisa mengubah, menambah, atau menghapus jawaban responden
 		$crud->unset_add();

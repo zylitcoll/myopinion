@@ -13,6 +13,7 @@ class Input extends CI_Controller {
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules("responden", "responden", 'required');
+        $this->form_validation->set_rules("email", "email", 'required|valid_email'); // Menambahkan validasi untuk email
         $this->form_validation->set_rules("p1", "p1", 'required');
         $this->form_validation->set_rules("p2", "p2", 'required');
         $this->form_validation->set_rules("p3", "p3", 'required');
@@ -27,16 +28,17 @@ class Input extends CI_Controller {
         {
             $this->load->model("Input_model");
             $data = array(
-                "responden"       =>$this->input->post("responden"),
-                "p1"              =>$this->input->post("p1"),
-                "p2"              =>$this->input->post("p2"),
-                "p3"              =>$this->input->post("p3"),
-                "p4"              =>$this->input->post("p4"),
-                "p5"              =>$this->input->post("p5"),
-                "p6"              =>$this->input->post("p6"),
-                "p7"              =>$this->input->post("p7"),
-                "p8"              =>$this->input->post("p8"),
-                "p9"              =>$this->input->post("p9"),
+                "responden"       => $this->input->post("responden"),
+                "email"           => $this->input->post("email"), // Menambahkan email ke dalam array data
+                "p1"              => $this->input->post("p1"),
+                "p2"              => $this->input->post("p2"),
+                "p3"              => $this->input->post("p3"),
+                "p4"              => $this->input->post("p4"),
+                "p5"              => $this->input->post("p5"),
+                "p6"              => $this->input->post("p6"),
+                "p7"              => $this->input->post("p7"),
+                "p8"              => $this->input->post("p8"),
+                "p9"              => $this->input->post("p9"),
                
             );
             $this->Input_model->insert_data($data);
@@ -58,6 +60,4 @@ class Input extends CI_Controller {
 	{
         $this->load->view("berhasil");
     }
-
-
 }

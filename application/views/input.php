@@ -64,7 +64,7 @@
             <fieldset>
               <div id="p<?php echo $row->id; ?>" class="form-group">
                 <div class="col-lg-10">
-                  <p><?php echo $row->pertanyaan; ?> ?</p>
+                  <p><?php echo $row->pertanyaan;?></p>
                   <div class="radio">
                     <label>
                       <input type="radio" name="p<?php echo $row->id; ?>" id="p<?php echo $row->id; ?>" value="<?php echo $row->isi1; ?>">

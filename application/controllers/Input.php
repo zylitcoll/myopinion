@@ -18,6 +18,10 @@ class Input extends CI_Controller {
         $this->form_validation->set_rules("p3", "p3", 'required');
         $this->form_validation->set_rules("p4", "p4", 'required');
         $this->form_validation->set_rules("p5", "p5", 'required');
+        $this->form_validation->set_rules("p6", "p6", 'required');
+        $this->form_validation->set_rules("p7", "p7", 'required');
+        $this->form_validation->set_rules("p8", "p8", 'required');
+        $this->form_validation->set_rules("p9", "p9", 'required');
 
         if($this->form_validation->run())
         {
@@ -29,6 +33,10 @@ class Input extends CI_Controller {
                 "p3"              =>$this->input->post("p3"),
                 "p4"              =>$this->input->post("p4"),
                 "p5"              =>$this->input->post("p5"),
+                "p6"              =>$this->input->post("p6"),
+                "p7"              =>$this->input->post("p7"),
+                "p8"              =>$this->input->post("p8"),
+                "p9"              =>$this->input->post("p9"),
                
             );
             $this->Input_model->insert_data($data);

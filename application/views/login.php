@@ -4,156 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-
-    <!-- Memanggil file CSS dari Bootstrap -->
-
-    <!-- Memanggil file CSS custom -->
+    <title>Login Admin | Sistem Informasi Kuisioner Survey</title>
     <link rel="stylesheet" href="<?= base_url(); ?>/set/css/style.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>/set/js/script.js">
-    <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/set/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/set/css/sb-admin-2.min.css" rel="stylesheet">
-
-
+    <style>
+        /* CSS tambahan untuk memastikan footer menempel di bawah */
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto; /* Membuat konten utama mengisi ruang yang tersedia */
+        }
+        footer {
+            flex-shrink: 0; /* Mencegah footer menyusut */
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="<?php echo base_url('home') ?>">MyOpinion</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url('home') ?>">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url('input') ?>">Isi Kuisioner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url('hasil') ?>">Lihat Hasil</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?php echo base_url('login') ?>">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <body>
-        <header>
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+    <main>
+        <section class="py-5" style="margin-top: 70px;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card o-hidden border-0 shadow-lg">
+                            <div class="card-body p-0">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Admin Login</h1>
+                                    </div>
 
-                <!-- Main Content -->
-                <div id="content">
+                                    <?php if ($this->session->flashdata('error')) : ?>
+                                        <div class="alert alert-danger">
+                                            <?php echo $this->session->flashdata('error'); ?>
+                                        </div>
+                                    <?php endif; ?>
 
-                    <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                        <!-- Nav Item - Charts -->
-                        <div class="container">
-                            <div class="container-fluid">
-                                <a class="navbar-brand" href="<?= base_url(); ?>/">MyOpinion</a>
-
-                                <ul class="navbar-nav ">
-                                    <li>
-                                        <a class="nav-link list_nav" href="/login">Masuk</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link list_nav" href="#contact">About</a>
-                                </ul>
-
+                                    <form class="user" action="<?php echo base_url('login/aksi_login'); ?>" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" name="nama_user" placeholder="Masukkan Username..." required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-
-
-
-                    </nav>
-                    <!-- End of Topbar -->
-
-        </header>
-
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="wrapper">
-                            <section id="home">
-
-                                <h2 class="card-header">login</h2>
-
-
-
-                                <form class="my-5 col-6" action="<?php echo base_url(); ?>Admin/login_validation" method="POST">
-                                    <h2><?php
-                                        echo '<label class="text-danger">' . $this->session->flashdata("error") . '</label>';
-                                        ?></h2>
-
-                                    <div class="mb-3">
-                                        <label for="text">Your username</label>
-                                        <input type="text" class="form-control " name="nama_user" required="required">
-                                        <span class="text-danger"><?php echo form_error("nama_user"); ?></span>
-                                        <small id="emailHelp" class="form-text text-muted"></small>
-
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password">Password</label>
-                                        <span class="text-danger"><?php echo form_error("password"); ?></span>
-                                        <input type="password" name="password" class="form-control " required="required">
-                                    </div>
-
-                                    <br>
-
-                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                                </form>
-
-                                <div class="wrapper">
-                                    <!-- untuk home -->
-                                    <section id="courses">
-                                        <div class="kolom">
-                                            <p class="deskripsi">You Will Need This</p>
-                                            <h2>Saran dan Masukan</h2>
-                                            <p>Saya dapat dihubungi jika Anda membutuhkan bantuan atau saran.</p>
-                                            <p>Tidak ada gunanya menunggu keadaan menjadi sempurna. Mulailah dari mana Anda berada, gunakan apa yang Anda miliki, dan bergerak maju dengan semangat. Kesuksesan dimulai dengan tekad untuk mencoba.</p>
-                                            <p><a href="mailto:muhtady.ti@gmail.com" class="tbl-biru">Kirim Pesan</a></p>
-                                        </div>
-                                    </section>
-
-                                </div>
-                        </div>
-                    </div>
-                </div>
-        </main>
-        <footer>
-            <div id="contact">
-                <div class="wrapper">
-                    <div class="footer">
-                        <div class="footer-section">
-                            <h3>zynle.</h3>
-                            <p>Belajar adalah kunci untuk mengasah kemampuan kita dan menjelma menjadi developer yang lebih baik setiap harinya."
-                                "Sikap yang rendah hati dan terus lapar akan pengetahuan adalah fondasi penting dalam perjalanan belajar sebagai seorang developer</p>
-                        </div>
-                        <div class="footer-section">
-                            <h3>About</h3>
-                            <p>MyOpinion adalah sebuah platform web survey yang memungkinkan pengguna untuk mengumpulkan opini dan pendapat dari responden melalui kuesioner online. Dengan fitur-fitur dan layanan yang tersedia, pengguna dapat mengumpulkan data dengan mudah dan menganalisis hasil survei untuk mendapatkan wawasan yang berharga.</p>
-                        </div>
-                        <div class="footer-section">
-                            <h3>Contact</h3>
-                            <p>JL Takengon - Angkup </p>
-                            <p>Kode Pos: 57365</p>
-                        </div>
-                        <div class="footer-section">
-                            <h3>Social</h3>
-                            <p><b>Instagram: </b>@m28.03y</p>
-                            <p><b>YouTube: </b>Tady Tv</p>
-                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div id="copyright">
-                <div class="wrapper">
-                    &copy; 2021. <b>Muhtady.</b> All Rights Reserved.
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">MyOpinion Survey</h5>
+                    <p>
+                        Platform untuk mengumpulkan dan menganalisis opini dengan mudah dan efisien.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="<?php echo base_url('home') ?>" class="text-dark">Home</a></li>
+                        <li><a href="<?php echo base_url('input') ?>" class="text-dark">Isi Kuisioner</a></li>
+                        <li><a href="<?php echo base_url('login') ?>" class="text-dark">Login</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 MyOpinion. All Rights Reserved.
+        </div>
+    </footer>
 
-        <!-- Memanggil file JavaScript bundle dari Bootstrap -->
-        <script src="<?= base_url(); ?>/set/js/bootstrap.min.js"></script>
+    <script src="<?= base_url(); ?>/set/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>/set/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>/set/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url(); ?>/set/js/sb-admin-2.min.js"></script>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
-    </body>
+</body>
 
 </html>

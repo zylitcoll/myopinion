@@ -1,116 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Sistem Informasi Kuisioner Survey</title>
-        <link href="assetsh/gambar/Bg3.png" rel="shortcut icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo base_url() ;?>/assetsh/theme/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="<?php echo base_url() ;?>/assetsh/theme/usebootstrap.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="bootstrap/html5shiv.js"></script>
-      <script src="bootstrap/respond.min.js"></script>
-    <![endif]-->
-    <script src="<?php echo base_url() ;?>/assetsh/js/Chart.min.js"></script>
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="<?php echo base_url() ;?>/Hasil/P1" class="navbar-brand">Sistem Informasi Kuisioner Survey</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-        </div>
-      </div>
-    </div>
-    <div class="page-header">
-            <h1 id="navbar">Hasil Kuisioner</h1>
-      </div>
-      <div class="panel panel-info col-lg-3">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel info</h3>
-          </div>
-          <div class="panel-body">
-              <div class="list-group">
-                  <a href="<?php echo base_url() ;?>Hasil/P1" class="list-group-item">
-                    Pertanyaan 1
-                  </a>
-                  <a href="<?php echo base_url() ;?>Hasil/P2" class="list-group-item">
-                    Pertanyaan 2
-                  </a>
-                  <a href="<?php echo base_url() ;?>Hasil/P3" class="list-group-item">
-                    Pertanyaan 3
-                  </a>
-                  <a href="<?php echo base_url() ;?>Hasil/P4" class="list-group-item">
-                    Pertanyaan 4
-                  </a>
-                  <a href="<?php echo base_url() ;?>Hasil/P5" class="list-group-item">
-                    Pertanyaan 5
-                  </a>
-                  <a href="<?php echo base_url() ;?>Datatabel" class="list-group-item">
-                    Kembali
-                  </a>
-              </div>
-              
-              
-          </div>
-        </div>
-<div class="container col-lg-9">
-   <p> Dari <span class="label label-success"><?php echo $total_r ;?></span> Responden Untuk pertanyaan Ini Menjawab Sangat Baik = <span class="label label-info"><?php echo $p1_j1 ;?></span>, Baik = <span class="label label-info"><?php echo $p1_j2 ;?></span>, Cukup = <span class="label label-info"><?php echo $p1_j3 ;?></span>, Dan Buruk = <span class="label label-info"><?php echo $p1_j4 ;?></span> Orang</p>
-   <div class="page-header">
-          <h1 id="navbar">Grafik</h1>
-    </div>   
-
-    <canvas id="myChart" width="400" height="100"></canvas>
-
-</div>
-<script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Sangat Baik', 'Baik', 'Cukup', 'Buruk'],
-        datasets: [{
-            label: '',
-            data: [<?php echo $p1_j1 ;?>, <?php echo $p1_j2 ;?>, <?php echo $p1_j3 ;?>, <?php echo $p1_j4 ;?>],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 4  
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+<html>
+<head>
+    <title>Hasil Kuesioner dan CSI</title>
+    <link rel="stylesheet" href="<?php echo base_url('set/css/sb-admin-2.min.css') ?>">
+    <style>
+        body { padding: 20px; }
+        .csi-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fc;
+            border-left: 5px solid #4e73df;
         }
-    }
-});
-</script>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="<?php echo base_url() ;?>/assetsh/bootstrap/bootstrap.min.js"></script>
-	<script src="<?php echo base_url() ;?>/assetsh/bootstrap/usebootstrap.js"></script>
-  </body>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hasil Analisis Kuesioner</h1>
+        <hr>
+
+        <h2>Rata-Rata Skor Kepuasan per Pertanyaan (MSS)</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Pertanyaan</th>
+                        <th>Skor Rata-rata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pertanyaan as $p): ?>
+                    <tr>
+                        <td><?php echo $p['id']; ?></td>
+                        <td><?php echo $p['pertanyaan']; ?></td>
+                        <td>
+                            <?php
+                                echo isset($mss[$p['id']]) ? number_format($mss[$p['id']], 2) : 'N/A';
+                            ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="csi-container">
+            <h2>Customer Satisfaction Index (CSI)</h2>
+            <h3 class="font-weight-bold text-primary"><?php echo number_format($csi, 2); ?>%</h3>
+            <?php
+            if ($csi >= 81) {
+                echo "<p class=\"lead\"><strong>Kategori: Sangat Puas</strong></p>";
+            } elseif ($csi >= 66) {
+                echo "<p class=\"lead\"><strong>Kategori: Puas</strong></p>";
+            } elseif ($csi >= 51) {
+                echo "<p class=\"lead\"><strong>Kategori: Cukup Puas</strong></p>";
+            } elseif ($csi >= 35) {
+                echo "<p class=\"lead\"><strong>Kategori: Kurang Puas</strong></p>";
+            } else {
+                echo "<p class=\"lead\"><strong>Kategori: Tidak Puas</strong></p>";
+            }
+            ?>
+        </div>
+        <hr>
+        <a href="<?php echo base_url('admin'); ?>" class="btn btn-secondary">Kembali ke Dashboard Admin</a>
+    </div>
+</body>
 </html>
